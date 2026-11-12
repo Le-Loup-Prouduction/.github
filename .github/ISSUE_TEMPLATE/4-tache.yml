@@ -1,0 +1,34 @@
+name: Tâche technique
+description: Travail de développement ou de maintenance à planifier (refonte, mise à jour de dépendance, documentation, build…).
+type: Task
+body:
+  - type: textarea
+    id: objectif
+    attributes:
+      label: Objectif
+      description: Ce qu'il faut obtenir, et pourquoi maintenant.
+    validations:
+      required: true
+
+  - type: textarea
+    id: fini
+    attributes:
+      label: Critères de fin
+      description: Ce qui permet de dire que la tâche est terminée et vérifiée.
+      value: |
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+
+  - type: textarea
+    id: pistes
+    attributes:
+      label: Pistes techniques
+      description: Fichiers, crates ou paquets concernés, approche envisagée, risques.
+
+  - type: textarea
+    id: depend
+    attributes:
+      label: Dépendances et liens
+      description: "Issues ou PR liées, évolution nécessaire dans leloup-lib ou dans un autre dépôt, documentation."

@@ -1,0 +1,84 @@
+name: Proposer une fonctionnalité
+description: Une idée, un besoin ou une amélioration pour une appli, un module Companion ou une page.
+type: Feature
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Décrivez d'abord **le besoin en régie**, puis la solution que vous imaginez : il y a souvent plusieurs façons d'y répondre.
+
+  - type: dropdown
+    id: composant
+    attributes:
+      label: Partie concernée
+      options:
+        - L'appli de bureau
+        - Le module Bitfocus Companion
+        - Une page web ou un téléphone invité
+        - Plusieurs applis de la suite
+        - Autre
+    validations:
+      required: true
+
+  - type: textarea
+    id: besoin
+    attributes:
+      label: Le besoin
+      description: Ce que vous voulez pouvoir faire, et pourquoi. Décrire la situation plutôt que la solution.
+      placeholder: "Pendant le direct, je dois couper le retour du plateau sans quitter le conducteur des yeux."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: La solution imaginée
+      description: "Comment vous la verriez : écran, bouton, raccourci clavier, action ou retour Companion, réglage…"
+    validations:
+      required: true
+
+  - type: textarea
+    id: aujourdhui
+    attributes:
+      label: Comment faites-vous aujourd'hui ?
+      description: Le contournement actuel, s'il y en a un, et ce qu'il coûte.
+
+  - type: textarea
+    id: usage
+    attributes:
+      label: Qui s'en servira, et quand
+      description: "Rôle (réalisation, son, plateau, présentation…) et moment (préparation, direct, après l'émission)."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priorite
+    attributes:
+      label: Priorité
+      options:
+        - Indispensable pour une émission prévue
+        - "Important : fait gagner beaucoup de temps ou évite des erreurs"
+        - Confort
+    validations:
+      required: true
+
+  - type: input
+    id: echeance
+    attributes:
+      label: Échéance
+      description: Date de l'émission ou du tournage qui en a besoin, s'il y en a une.
+      placeholder: "avant le 05/12/2026"
+
+  - type: textarea
+    id: exemples
+    attributes:
+      label: Maquettes, exemples, références
+      description: Croquis, captures d'un autre logiciel, vidéo… Glisser les fichiers ici.
+
+  - type: checkboxes
+    id: verifs
+    attributes:
+      label: Avant d'envoyer
+      options:
+        - label: J'ai cherché dans les issues ouvertes et cette demande n'y est pas déjà.
+          required: true

@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Applis et documentation de la suite
+    url: https://github.com/Le-Loup-Prouduction
+    about: "Vue d'ensemble de l'organisation : applis, modules Companion, ports réseau (réservée aux membres)."

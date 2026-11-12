@@ -1,0 +1,147 @@
+name: Problème de connexion réseau
+description: Des postes, une appli ou Companion ne se voient pas, se déconnectent ou ne reçoivent pas les commandes.
+type: Bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Avant de remplir ce formulaire, ouvrez l'écran **« Diagnostic réseau »** (dans les réglages de l'appli) sur chaque poste concerné : il donne l'essentiel de ce qui est demandé ici (adresses IP, ports, pare-feu, profil réseau, dernier message reçu).
+
+  - type: dropdown
+    id: symptome
+    attributes:
+      label: Symptôme
+      options:
+        - Impossible de se connecter
+        - La connexion tombe ou se reconnecte sans arrêt
+        - Les commandes partent mais n'ont aucun effet
+        - Les retours d'état sont absents ou en retard
+        - Lenteur, décalage ou son haché
+        - Autre
+    validations:
+      required: true
+
+  - type: textarea
+    id: constat
+    attributes:
+      label: Ce qui se passe
+      description: Ce que vous voyez, depuis quand, et sur quels postes. Message d'erreur exact s'il y en a un.
+    validations:
+      required: true
+
+  - type: textarea
+    id: postes
+    attributes:
+      label: Postes concernés
+      description: "Pour chaque poste : rôle (régie, serveur de lecture, Companion, téléphone…), système, adresse IP, appli et version."
+      value: |
+        - Poste 1 : rôle, système, IP, appli et version
+        - Poste 2 : rôle, système, IP, appli et version
+    validations:
+      required: true
+
+  - type: textarea
+    id: diagnostic
+    attributes:
+      label: Écran « Diagnostic réseau »
+      description: "Capture ou copie de l'écran sur chaque poste concerné : IP locales, port et protocole, règle du pare-feu, profil réseau, dernier message reçu."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: companion
+    attributes:
+      label: État de la connexion dans Companion
+      options:
+        - Companion n'est pas en jeu
+        - Connecting (connexion en cours)
+        - Timeout (pas de réponse)
+        - Connexion refusée
+        - Connectée, mais le problème est là quand même
+        - Autre
+    validations:
+      required: true
+
+  - type: input
+    id: versions_companion
+    attributes:
+      label: Versions de Companion et du module
+      description: Laisser vide si Companion n'est pas en jeu.
+      placeholder: "Companion 4.1.2, module 0.3.0"
+
+  - type: dropdown
+    id: reseau
+    attributes:
+      label: Type de réseau
+      multiple: true
+      options:
+        - Filaire
+        - Wi-Fi
+        - VPN
+        - Plusieurs sous-réseaux ou VLAN
+        - Réseau du lieu, non maîtrisé
+    validations:
+      required: true
+
+  - type: dropdown
+    id: profil
+    attributes:
+      label: Profil réseau Windows
+      description: Affiché dans l'écran « Diagnostic réseau ».
+      options:
+        - Privé
+        - Domaine
+        - Public
+        - Je ne sais pas
+        - Aucun poste Windows en jeu
+    validations:
+      required: true
+
+  - type: dropdown
+    id: parefeu
+    attributes:
+      label: Pare-feu
+      options:
+        - Règle de l'appli présente sur tous les postes
+        - Règle absente, ou création refusée
+        - Autre pare-feu ou antivirus actif
+        - Je ne sais pas
+    validations:
+      required: true
+
+  - type: textarea
+    id: essais
+    attributes:
+      label: Ce qui a déjà été essayé
+      description: "Redémarrage de l'appli ou du poste, autre câble ou autre réseau, ping entre les postes, autre port…"
+
+  - type: input
+    id: quand
+    attributes:
+      label: Date et heure du problème
+      description: Pour retrouver le moment exact dans les journaux.
+      placeholder: "12/11/2026 vers 20 h 45"
+    validations:
+      required: true
+
+  - type: textarea
+    id: journaux
+    attributes:
+      label: Journaux
+      description: |
+        Glisser ici les journaux des postes concernés (ou les dossiers compressés en .zip) :
+        - Windows : `%LOCALAPPDATA%\<identifiant de l'appli>\logs`
+        - macOS : `~/Library/Logs/<identifiant de l'appli>`
+        - Linux : `~/.local/share/<identifiant de l'appli>/logs`
+        - version portable : dossier `data\logs` à côté de l'exécutable
+        - module Companion : copier le journal de la connexion dans Companion
+
+  - type: checkboxes
+    id: verifs
+    attributes:
+      label: Avant d'envoyer
+      options:
+        - label: J'ai cherché dans les issues ouvertes et ce problème n'y est pas déjà.
+          required: true
+        - label: Ce signalement (journaux et captures compris) ne contient ni mot de passe, ni jeton, ni clé.
+          required: true

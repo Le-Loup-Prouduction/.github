@@ -1,0 +1,156 @@
+name: Signaler un bug
+description: Une appli, un module Companion ou une page ne fait pas ce qu'il devrait (plantage, erreur, mauvais comportement).
+type: Bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci de prendre le temps de signaler ce problème. Plus le signalement est précis, plus vite il sera corrigé.
+        **Un seul problème par signalement.** Pour une connexion entre postes ou avec Companion qui ne marche pas, préférez le formulaire « Problème de connexion réseau ».
+
+  - type: dropdown
+    id: composant
+    attributes:
+      label: Partie concernée
+      options:
+        - L'appli de bureau
+        - Le module Bitfocus Companion
+        - Une page web ou un téléphone invité
+        - Un serveur ou le relais des mises à jour
+        - L'installation ou la mise à jour
+        - Je ne sais pas
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: "Appli : écran « À propos » ou nom de l'installeur. Module Companion : version affichée dans la liste des connexions. Indiquer les deux si les deux sont en jeu."
+      placeholder: "appli 0.4.0, module 0.3.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Système du poste concerné
+      description: Plusieurs choix possibles si le problème touche plusieurs postes.
+      multiple: true
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - iPhone ou iPad
+        - Android
+        - Autre
+    validations:
+      required: true
+
+  - type: input
+    id: os_version
+    attributes:
+      label: Version du système et machine
+      placeholder: "Windows 11 24H2 sur PC portable ; macOS 15.4 sur Mac mini M2"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: gravite
+    attributes:
+      label: Gravité
+      options:
+        - "Bloquant à l'antenne : l'émission est ou serait coupée"
+        - Bloquant en préparation ou en répétition
+        - Gênant, mais on peut contourner
+        - "Mineur : affichage, texte, confort"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequence
+    attributes:
+      label: Fréquence
+      options:
+        - À chaque fois
+        - Souvent
+        - Parfois, sans cause apparente
+        - Une seule fois jusqu'ici
+    validations:
+      required: true
+
+  - type: textarea
+    id: constat
+    attributes:
+      label: Ce qui s'est passé
+      description: Décrire ce que vous avez vu, avec le message d'erreur exact s'il y en a un.
+      placeholder: "Au GO de la ligne 12, le lecteur REC est resté sur l'image précédente et le message « … » s'est affiché."
+    validations:
+      required: true
+
+  - type: textarea
+    id: attendu
+    attributes:
+      label: Ce qui aurait dû se passer
+    validations:
+      required: true
+
+  - type: textarea
+    id: etapes
+    attributes:
+      label: Étapes pour reproduire
+      description: Les gestes à refaire, dans l'ordre, pour voir le problème à nouveau. Indiquer si vous n'arrivez pas à le reproduire.
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: input
+    id: quand
+    attributes:
+      label: Date et heure du problème
+      description: Pour retrouver le moment exact dans les journaux.
+      placeholder: "12/11/2026 vers 20 h 45"
+    validations:
+      required: true
+
+  - type: textarea
+    id: contexte
+    attributes:
+      label: Installation en place
+      description: "Postes et applis utilisés, version de Companion, matériel relié (ATEM, Stream Deck, carte son, écrans…), type de réseau (filaire, Wi-Fi, VPN). Préciser ce qui a changé depuis la dernière fois où tout marchait."
+
+  - type: textarea
+    id: journaux
+    attributes:
+      label: Journaux
+      description: |
+        Glisser ici le journal du jour du problème (ou le dossier compressé en .zip). Après une fermeture anormale, l'appli propose « Ouvrir les journaux ». Sinon :
+        - Windows : `%LOCALAPPDATA%\<identifiant de l'appli>\logs`
+        - macOS : `~/Library/Logs/<identifiant de l'appli>`
+        - Linux : `~/.local/share/<identifiant de l'appli>/logs`
+        - version portable : dossier `data\logs` à côté de l'exécutable
+        - module Companion : copier le journal de la connexion dans Companion
+
+  - type: textarea
+    id: captures
+    attributes:
+      label: Captures d'écran ou vidéo
+      description: Glisser les fichiers ici. Une vidéo du téléphone suffit si le problème est difficile à décrire.
+
+  - type: textarea
+    id: remarques
+    attributes:
+      label: Contournement trouvé et autres remarques
+
+  - type: checkboxes
+    id: verifs
+    attributes:
+      label: Avant d'envoyer
+      options:
+        - label: J'ai cherché dans les issues ouvertes et ce problème n'y est pas déjà.
+          required: true
+        - label: Ce signalement (journaux et captures compris) ne contient ni mot de passe, ni jeton, ni clé.
+          required: true
